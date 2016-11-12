@@ -1,0 +1,32 @@
+﻿<Window x:Class="Snippets.newSnippet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Snippets"
+        mc:Ignorable="d"
+        Title="Snippets" Height="347" Width="364"  
+        Background="#FF252526" Foreground="White" WindowStyle="ToolWindow"
+        MinHeight="347" MinWidth="364">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="00:00:03" Storyboard.TargetProperty="Opacity" To="1" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <DockPanel LastChildFill="True" Margin="5,2,5,40">
+            <TextBlock x:Name="textBlock1" DockPanel.Dock="Top" Text="Short Name:" Margin="2,2,0,3" />
+            <TextBox x:Name="tbShortName" DockPanel.Dock="Top" Margin="5,2,0,3" Width="300" HorizontalAlignment="Left" />
+            <TextBlock x:Name="textBlock" DockPanel.Dock="Top" Text="Full Text:" Margin="2,2,0,3" />
+            <TextBox x:Name="tbFullText" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Margin="5,2,5,0"/>
+        </DockPanel>
+        <Button x:Name="btnCancel" Content="Cancel" Margin="10,0,0,10" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="93" Click="btnCancel_Click"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="93" Height="23" Click="btnSubmit_Click"/>
+    </Grid>
+</Window>

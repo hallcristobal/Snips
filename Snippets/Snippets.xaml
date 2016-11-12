@@ -1,0 +1,79 @@
+﻿<Window x:Class="Snippets.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Snippets"
+        mc:Ignorable="d"
+        Title="Snippets" Height="391" Width="286" 
+        Background="#FF252526" Foreground="White"
+        MinWidth="286" MinHeight="391">
+    
+    <Window.Resources>
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="10,0" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="Background" Value="#FF3E3E42" />
+            <Setter Property="Foreground" Value="#FFCBCBCB" />
+            <Setter Property="BorderBrush" Value="#FF252525" />
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF5C5C5C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ContextMenu x:Key="cmSnippet">
+            <MenuItem Header="Remove..." Click="Remove_Click" />
+            <MenuItem Header="Edit..." Click="Edit_Click" />
+        </ContextMenu>
+        <Style TargetType="{x:Type ContextMenu}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
+            <Setter Property="HasDropShadow" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContextMenu}">
+                        <Border x:Name="Border" Background="#FF1B1B1C" BorderThickness="1">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="#FF888888" />
+                            </Border.BorderBrush>
+                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasDropShadow" Value="true">
+                                <Setter TargetName="Border" Property="Padding" Value="0,3,0,3" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <DockPanel LastChildFill="True" Margin="5,2,5,40">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel x:Name="StackMain" CanVerticallyScroll="True">
+                    <Label x:Name="TopLabel" Content="Snippets" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FFCBCBCB" FontFamily="Calibri" FontSize="16" />
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+
+        <Button x:Name="btnAdd" Content="Add..." Margin="0,0,10,10" VerticalAlignment="Bottom" Style="{StaticResource buttonStyle}" Height="25" HorizontalAlignment="Right" Click="btnAdd_Click" Width="80"/>
+        <Button x:Name="btnSave" Style="{StaticResource buttonStyle}" Content="Save..." HorizontalAlignment="Left" Margin="10,0,0,10" Width="80" Height="25" VerticalAlignment="Bottom" Click="btnSave_Click"/>
+        <Button x:Name="btnLoad" Style="{StaticResource buttonStyle}" Content="Load..." HorizontalAlignment="Left" Margin="95,0,0,10" VerticalAlignment="Bottom" Width="80" Height="25" Click="btnLoad_Click"/>
+    </Grid>
+</Window>
